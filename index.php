@@ -1,6 +1,101 @@
 <?php
+CONST PIE = 3.142 ;
 
+$radius = 7;
+
+$area = PIE * $radius * $radius;
+
+echo $area;
+
+
+
+
+
+
+$number1 = 20;
+$number2 = 30;
+
+$name = "Esther Idowu";
+// $age = "35";
+// $nationality = "Nigerian";
+
+// echo "My name is ".$name.", I am ".$age." years old. I am a ".$nationality.".";
+
+// $sum = $number2 + $number1;
+// $product = $number1 * $number2;
+// $difference = $number1 - $number2;
+// $quotient = $number1 / $number2;
+
+// echo "The sum is ".$sum.", The product is ".$product.", the difference is ".$difference.", The quotient is ".$quotient;
+
+// //condtional statements
+// 2 == 2.0
+
+// 2 === 2.0
+
+// abubakar == Abubakar
+
+// abubakar === Abubakar
+
+// $i++ = $i + 1
+
+// $i-- = $i - 1
  
+// && = AND 
+
+// || = OR
+
+// ++ = Increment
+
+// -- = decrement
+
+// ==  comparision operator 
+
+// ===   
+
+
+// true && true = true
+// true && false = false
+// false && true = false
+// false && false = false
+
+// true || true = true
+//false || true = true
+//true || false = true
+//false || false = false
+
+// Two of the many comparison operators used by PHP are '==' (i.e. equal) and '===' (i.e. identical).
+
+$a = "22";
+$b = 22;
+
+// if($a == $b){
+//     echo "A is equal to B";
+// }
+
+
+// echo $a + $b;
+
+
+
+// if ($a === $b || $a == $b) {
+
+// 	echo " A and B are identical";
+
+// }elseif ($a == $b) {
+
+//     echo "A is equal to B";
+
+// }else{
+
+// 	echo "A is not equal to B and they are not identical";
+// }
+
+
+
+
+
+
 
 ?>
 
@@ -8,7 +103,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home page</title>
+	<title><?php echo "Welcome to PHPMYSQL Class"; ?></title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -95,7 +190,7 @@
 
    <ul class="students">
 		 <li><a class="active" href="index.php"> Home</a></li>	
-	     <li><a href="about.php">About</a></li>
+	     <li><a href="about.php"><?php echo "Welcome Yezid";  ?></a></li>
 	     <li><a href="contact.php">Contact</a></li>
 	</ul>
 	<br>
