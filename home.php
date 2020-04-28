@@ -1,18 +1,6 @@
 <?php
 
 
- $profile = Profile::getProfileByPhone($user_phone_no);
-            $accountName = $getBankDetails['AccountName'];
-            $names = explode(" ", $accountName);
-            var_dump("names", $accountName,'names exploded');
-            if(empty($profile->firstname) && $names[1]) $profile->firstname = str_replace(",", "", $names[1]);
-
-            if(empty($profile->lastname) && $names[0]) $profile->lastname = str_replace(",", "", $names[0]);
-            if($profile->save(false)) {
-                var_dump("profile updated");
-            }
-
-
 
 
 ?>

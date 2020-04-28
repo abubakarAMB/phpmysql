@@ -16,9 +16,5 @@ if ($result->num_rows > 0) {
 }
 
 
-var_dump($data);
-
-
-
 
 ?>
