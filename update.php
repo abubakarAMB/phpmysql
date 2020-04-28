@@ -2,29 +2,59 @@
 
 include 'db.php';
 
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    //check if data with the id exist in the database
+
+    $sql = 'SELECT * FROM `users` WHERE `id` = "'.$_GET['id'].'"';
+    $data = [];
+
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+
+       $data = $result->fetch_assoc();
+
+    }else{
+
+    	echo "id is invalid";
+    }
+
+   // var_dump($data);
+
+
+
+
+}
+
+
 
 if (isset($_POST['submit'])) {
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	$cpassword = $_POST['cpassword'];
+	$id = $_POST['id'];
 
-	if (empty($username) || empty($password) || empty($cpassword)) {
+	if (empty($username) || empty($password) || empty($cpassword) || empty($id)) {
 		echo "All field are required";
 	}else{
       if ($password === $cpassword) {
+
       	 $token = mt_rand(100, 999999);
       	 $token = md5($token);
       	 $password = md5($password);
 
-      	 $sql = "INSERT INTO `users` (`username`, `password`, `token`) VALUES ('".$username."', '".$password."','".$token."')";
+      	 $sql = 'UPDATE users SET username = "'.$username.'",password = "'.$password.'" WHERE id ="'.$id.'" ';
 
       	 $successful = $conn->query($sql);
 
-      	 if ($successful) {
-      	 	echo "registration successful!";
-      	 }else{
-      	 	echo "registration failed!";
-      	 }
+      if ($successful) {
+
+      	  echo "updated successfully";
+
+        }else{
+
+        	echo "update failed";
+        }
 
 
 
@@ -39,8 +69,8 @@ if (isset($_POST['submit'])) {
 }
 
 
-?>
 
+?>
 
 
 
@@ -147,10 +177,12 @@ if (isset($_POST['submit'])) {
  <h3>Using CSS to style an HTML Form</h3>
 
 <div>
-  <form action="about.php" method="POST">
+  <form action="update.php" method="POST">
     
+    <input type="hidden" name="id" value="<?php if(isset($data) && !empty($data)){ echo $data['id']; }   ?>">
+
     <label for="username">Username</label>
-    <input type="text" id="username" name="username" placeholder="Your username.." required value="<?php if(isset($_POST['username']) && !empty($_POST['username'])){ echo $_POST['username'];} ?>">
+    <input type="text" id="username" name="username" placeholder="Your username.." required value="<?php if(isset($data) && !empty($data)){ echo $data['username']; }   ?>">
 
     <label for="password">Password</label>
     <input type="password" id="password" name="password" placeholder="Your password.." required>

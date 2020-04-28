@@ -1,11 +1,15 @@
 <?php
+
+include 'db.php';
+
+
 CONST PIE = 3.142 ;
 
 $radius = 7;
 
 $area = PIE * $radius * $radius;
 
-echo $area;
+// echo $area;
 
 
 
@@ -92,10 +96,78 @@ $b = 22;
 // }
 
 
+//what is an array?
+
+//array types
+
+//the index of an array starts from zero;
+
+//Indexed array
+
+// $students = ["Esther", "yezid"];
+
+// $students_alt = array("Esther", "Yezid");
+
+// echo $students_alt[0];
+
+//associative array
+
+// $student_info = ["name"=>"Esther Idowu", "age"=>"25", "gender"=>"Female", "occupation"=>"Software developer"];
+
+// echo "My name is ".$student_info["name"].", I am ".$student_info["age"].". I am a ".$student_info["gender"];
+
+//associative array
+
+$students =  array(
+						array(
+							"name"=>"Esther Idowu",
+							"age"=>"25",
+							"gender"=>"Female",
+							"occupation"=>"Software developer"
+						),
+		               array(
+			               	"name"=>"Yezid",
+							"age"=>"30",
+							"gender"=>"Male",
+							"occupation"=>"Software developer"
+		               )
+	             );
+
+// echo $students[1]["name"];
+
+// echo count($students);
+// 
+// $esther_age = 105;
+
+
+// $storey = "My name is Abubakar Musa Bala";
+
+// $data = explode(" ", $storey);
+
+
+// explode(delimiter, string);
+
+// var_dump($data);
 
 
 
 
+// function Add($a, $b=10){
+
+//   $sum = $a + $b;
+//   return $sum;
+
+// }
+
+
+// function getAllEvenNumbers($start, $end){
+
+
+
+// }
+
+
+// echo Add(4,5);
 
 ?>
 
@@ -189,7 +261,7 @@ $b = 22;
 
 
    <ul class="students">
-		 <li><a class="active" href="index.php"> Home</a></li>	
+		 <li><a class="active" href="index.php"> <?= $students[1]["age"]   ?></a></li>	
 	     <li><a href="about.php"><?php echo "Welcome Yezid";  ?></a></li>
 	     <li><a href="contact.php">Contact</a></li>
 	</ul>
@@ -227,6 +299,50 @@ $b = 22;
  </div>
 <input class="form-control" type="text" name="name">
  -->
+ <table>
+ 	<thead>
+ 		<th>Name</th>
+ 		<th>Age</th>
+ 		<th>Gender</th>
+ 		<th>Occupation</th>
+ 	</thead>
+ 	<tbody>
+ 		<?php for ($i=0; $i < count($students) ; $i++):?>
+ 			<tr>
+ 				<td><?=$students[$i]["name"] ?></td>
+ 				<td><?=$students[$i]["age"] ?></td>
+ 				<td><?=$students[$i]["gender"] ?></td>
+ 				<td><?=$students[$i]["occupation"] ?></td>
+                
+ 			</tr>
+ 		<?php endfor; ?>
+
+ 	</tbody>
+ </table>
+
+ <h2>Using foreach Loop</h2>
+
+  <table>
+ 	<thead>
+ 		<th>Name</th>
+ 		<th>Age</th>
+ 		<th>Gender</th>
+ 		<th>Occupation</th>
+ 	</thead>
+ 	<tbody>
+ 		<?php foreach ($students as $student) {  ?>
+ 			<tr>
+ 				<td><?=$student["name"] ?></td>
+ 				<td><?=$student["age"] ?></td>
+ 				<td><?=$student["gender"] ?></td>
+ 				<td><?=$student["occupation"] ?></td>
+                
+ 			</tr>
+
+ 		<?php } ?>
+
+ 	</tbody>
+ </table>
 
 </body>
 </html>
